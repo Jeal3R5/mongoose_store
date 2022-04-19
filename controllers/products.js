@@ -3,6 +3,8 @@
 // const productSeed = require('./models/productSeed');
 // const productRouter = express.Router();
 
+const { append } = require("express/lib/response");
+
 // productRouter.get('/seed', (req,res) => {
 //     product.deleteMany({}, (err, deletedProducts) => {
 //         product.create(productSeed, (err, data) => {
@@ -10,7 +12,6 @@
 //         });
 //     });
 // });
-
 
 
 
