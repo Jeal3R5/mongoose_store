@@ -1,26 +1,26 @@
 require("dotenv").config();
+
+//Dependencies
 const express = require("express");
-// const mongoose = require("mongoose");
 // const methodOverride = require("method-override");
 // const products = require("./models/product");
 // const productsController = require("./controllers/products");
 const app = express();
 const PORT = process.env.PORT || 3000;
+const DATABASE_URL = process.env.DATABASE_URL;
 
-// Middleware
-// app.use(express.urlencoded({ extended: true }));
-// app.use(methodOverride("_method"));
-// app.use("/products", productsController);
 
-// mongoose.connect(process.env.DATABASE_URL, {
-//   usedNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+//Mongoose Config
+const mongoose = require("mongoose");
+const db = mongoose.connection;
+mongoose.connect(DATABASE_URL);
 
-// const db = mongoose.connection;
-// db.on("error", (err) => console.log(err.message + "is mongo not running?"));
-// db.on("connected", () => console.log("mongoose connected"));
-// db.on("disconnected", () => console.log("mongo disconnected"));
+//Check for DB connection and errors
+db.on("error", (err) => console.log(err.message));
+db.on("connected", () => console.log("mongo connected"));
+db.on("disconnected", () => console.log("mongo disconnected"));
+
+
 
 
 
@@ -28,6 +28,24 @@ const PORT = process.env.PORT || 3000;
 app.get('/', (req, res) => {
     res.send("You are home");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+// Middleware
+// app.use(express.urlencoded({ extended: true }));
+// app.use(methodOverride("_method"));
+// app.use("/products", productsController);
+
+
 
 
 
