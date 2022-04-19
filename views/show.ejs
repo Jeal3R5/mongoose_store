@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Show Page</title>
+</head>
+<body>
+    <nav>
+        <a href="/products">Back to all Products</a>
+    </nav>
+    <h1><%= product.name% %></h1><br><br>
+    <div>Product Description: <%= product.description %></div>
+    <br><br>
+    <div><%= product.img %></div>
+    <br><br>
+    <div>Price: <%=product.price%></div>
+    <br><br>
+    <div>Qty: <%=product.qty%></div>
+</body>
+</html>
