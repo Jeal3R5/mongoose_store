@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const products = require('./models/product');
-const productsController = require('./constrollers/products');
+const productsController = require('./controllers/products');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -15,7 +15,7 @@ app.use('/products', productsController);
 
 
 
-mongoose.connect(process.env.**************, {
+mongoose.connect(process.env.DATABASE_URL, {
     usedNewUrlParser: true,
     useUnifiedTopology: true,
 });

@@ -1,6 +1,6 @@
 const express = require('express');
-const product = require('..models/products');
-const productSeed = require('../models/productSeed');
+const product = require('.models/products');
+const productSeed = require('./models/productSeed');
 const productRouter = express.Router();
 
 productRouter.get('/seed', (req,res) => {
