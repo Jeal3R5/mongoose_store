@@ -18,10 +18,11 @@
     <div>Price: <%= product.price %> </div><br><br>
     <div>Qty: <%= product.qty %> </div><br><br>
 
-    <div>
-        <button id="subtract">BUY</button>
+    <div> 
+       <button id="buy">BUY</button>
     </div>
     <br>
+    
     <a href="/products/<%=product._id%>/edit">Edit Product</a> <br><br>
     <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
         <input type="submit" value="DELETE">

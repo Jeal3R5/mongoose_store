@@ -2,7 +2,7 @@ const express = require("express");
 const Product = require("../models/product");
 const productSeed = require("../models/productSeed");
 const productRouter = express.Router();
-
+// const btnBuy = require("../public/app.js")
 
 //Index Route
 productRouter.get("/", async (req, res) => {
@@ -59,10 +59,6 @@ productRouter.put("/:id", (req, res) => {
 productRouter.post("/", async (req, res) => {
   //create the product
   await Product.create(req.body).catch((err) => res.send(err))
-    // if (err) {
-    //   console.log(err);
-    //   res.send(err);
-    // } else {
     // redirect back to the main page
       res.redirect("/products");
   });
@@ -86,6 +82,13 @@ productRouter.get("/:id", (req, res) => {
     res.render("show.ejs", { product });
   });
 });
+
+// //Buy Button
+
+// btnBuy.addEventListener('click', () => {
+//     <%= product.qty %> -= 1;
+// })
+
 
 
 
