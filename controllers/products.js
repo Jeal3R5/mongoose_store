@@ -3,6 +3,16 @@ const Product = require("../models/product");
 const productSeed = require("../models/productSeed");
 const productRouter = express.Router();
 
+//Index Route
+productRouter.get("/", async (req, res) => {
+  //get products
+  const products = await Product.find({}).catch((err) => res.send(err))
+  // Product.find({}, (err, allProducts) => {
+    //res.send(allProducts)
+     res.render("index.ejs", { products })
+  });
+
+
 productRouter.get("/seed", async (req, res) => {
   await Product.remove({}).catch((err) => res.send(err)) 
     const products = await Product.create(productSeed, (err, data) => {
@@ -11,13 +21,6 @@ productRouter.get("/seed", async (req, res) => {
   });
 
 
-//Index Route
-productRouter.get("/", (req, res) => {
-  Product.find({}, (err, allProducts) => {
-    //res.send(allProducts)
-     res.render("index.ejs", { products: allProducts });
-  });
-});
 
 //New Route
 productRouter.get("/new", (req, res) => {
@@ -27,7 +30,7 @@ productRouter.get("/new", (req, res) => {
 //Delete Route
 productRouter.delete("/:id", (req, res) => {
   Product.findByIdAndDelete(req.params.id, (err, deletedProduct) => {
-    // res.send({ deletedProduct: deletedProduct });
+    //res.send({ deletedProduct: deletedProduct });
     res.redirect("/products");
   });
 });
@@ -36,22 +39,22 @@ productRouter.delete("/:id", (req, res) => {
 productRouter.put("/:id", (req, res) => {
   Product.findByIdAndUpdate(req.params.id, req.body, (err, updatedProduct) => {
     if (err) console.log(err);
-    res.send(updatedProduct);
+    //res.send(updatedProduct);
     res.redirect(`/products/${req.params.id}`);
   });
 });
 
 //Create Route
-productRouter.post("/products", (req, res) => {
-  Product.create(req.body, (err, createdProduct) => {
-    if (err) {
-      console.log(err);
-      res.send(err);
-    } else {
+productRouter.post("/", async (req, res) => {
+  //create the product
+  await Product.create(req.body).catch((err) => res.send(err))
+    // if (err) {
+    //   console.log(err);
+    //   res.send(err);
+    // } else {
+    // redirect back to the main page
       res.redirect("/products");
-    }
   });
-});
 
 //Edit Route
 productRouter.get("/:id/edit", (req, res) => {
