@@ -6,16 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product</title>
 </head>
-<>
-    <h1>Edit Product</h1>
 
-    <form action="/products/<%= product._id %>?_method=PUT" method="POST">
-        Name: <input type="text" name="name" value="<%= product.name %>">
-        Description: <input type="text" name="description" value="<%= product.description%>">
-        Img: <input type="text" name="img" value="<%= product.img %>">
-        Price: <input type="number" name="price" value="<%= product.price %>">
-        Qty: <input type="number" name="qty" value="<%= product.qty %>">
-    </>
+    <h1>Edit <%= product.name %> </h1>
+
+    <form action="/products/<%=products._id%>?_method=PUT" method="POST" />, <br>
+        Name: <input type="text" name="name" value="<%= product.name %>" /> <br>
+        Description: <input type="text" name="description" value="<%= product.description %>" /> <br><br>
+        Img: <input type="text" name="img" value="<%= product.img %>" /><br>
+        Price: <input type="number" name="price" value="<%= product.price %>" /><br>
+        Qty: <input type="number" name="qty" value="<%= product.qty %>" /><br>
+        <input type="button" value="Update!" /><br>
+    </form>
+    <a href="/products">Return Home</a>
+</head>
 </body>
 </html>
 

@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Show Page</title>
+    <title>Product Page</title>
 </head>
 <body>
     <nav>
-        <a href="/products">Back to all Products</a>
+        <a href="/products">Return Home</a>
     </nav>
-    <h1><%= product.name% %></h1><br><br>
-    <div>Description: <%= product.description %></div>
-    <br><br>
-    <div><%= product.img %></div>
-    <br><br>
-    <div>Price: <%=product.price% ></div>
-    <br><br>
-    <div>Qty: <%=product.qty%> </div>
+    <h1><%= product.name %></h1><br><br>
+    <div>Description: <%= product.description %></div><br><br>
+    <div>Img: <%= product.img %> </div><br><br>
+    <div>Price: <%= product.price %> </div><br><br>
+    <div>Qty: <%= product.qty %> </div><br><br>
+
+    <a href="/products/<%=products._id%>/edit">Edit Product</a> <br><br>
+    <form action="/products/<%=products._id%>?_method=DELETE" method="POST">
+        <input type="submit" value="DELETE" />
+    </form>
+
 </body>
 </html>

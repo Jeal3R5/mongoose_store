@@ -3,20 +3,19 @@ const Product = require("../models/product");
 const productSeed = require("../models/productSeed");
 const productRouter = express.Router();
 
-const { append } = require("express/lib/response");
-
-productRouter.get("/seed", (req, res) => {
-  Product.deleteMany({}, (err, deletedProducts) => {
-    Product.create(productSeed, (err, data) => {
+productRouter.get("/seed", async (req, res) => {
+  await Product.remove({}).catch((err) => res.send(err)) 
+    const products = await Product.create(productSeed, (err, data) => {
       res.redirect("/products");
     });
   });
-});
+
 
 //Index Route
 productRouter.get("/", (req, res) => {
   Product.find({}, (err, allProducts) => {
-    res.render("index.ejs", { products: allProducts });
+    //res.send(allProducts)
+     res.render("index.ejs", { products: allProducts });
   });
 });
 
@@ -28,7 +27,7 @@ productRouter.get("/new", (req, res) => {
 //Delete Route
 productRouter.delete("/:id", (req, res) => {
   Product.findByIdAndDelete(req.params.id, (err, deletedProduct) => {
-    res.send({ deletedProduct: deletedProduct });
+    // res.send({ deletedProduct: deletedProduct });
     res.redirect("/products");
   });
 });
@@ -43,7 +42,7 @@ productRouter.put("/:id", (req, res) => {
 });
 
 //Create Route
-productRouter.post("/", (req, res) => {
+productRouter.post("/products", (req, res) => {
   Product.create(req.body, (err, createdProduct) => {
     if (err) {
       console.log(err);

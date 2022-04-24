@@ -1,5 +1,5 @@
 
-module.exports = [
+const products = [
     {
       name: "Beans",
       description:
@@ -54,6 +54,6 @@ module.exports = [
 
 
 
-
+module.exports = products
 
 

@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Product/title>
+    <title>Add New Product</title>
 </head>
 <body>
-    <h1>Add a New Product</h1>
+    <h1>Add New Product</h1>
+    <form action="/products" method="post">
+        Name: <input type="text" name="name"><br><br>
+        Description: <input type="text" name="description"><br><br>
+        Img: <input type="text" name="img"><br><br>
+        Price: <input type="number" name="price"><br><br>
+        Qty: <input type="number" name="qty"><br><br>
+        <input type="submit" value="Add Product"><br><br>
+    </form>
+    <a href="/products">Return Home</a>
 </body>
 </html>
+
+
+
